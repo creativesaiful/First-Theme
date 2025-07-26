@@ -1,13 +1,15 @@
-<div class="product-card" style="border:1px solid #ddd; padding:20px; margin-bottom:20px;">
+<div class="card h-100">
   <a href="{{ product.url }}">
-    <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}" style="width:100%;">
+    <img src="{{ product.featured_image | img_url: 'medium' }}" class="card-img-top" alt="{{ product.title }}">
   </a>
-  <h3>{{ product.title }}</h3>
-  <p>{{ product.price | money }}</p>
+  <div class="card-body text-center">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <p class="card-text">{{ product.price | money }}</p>
 
-  {% if product.available %}
-    <button style="padding:10px 20px;">Add to Cart</button>
-  {% else %}
-    <span style="color:red;">Out of stock</span>
-  {% endif %}
+    {% if product.available %}
+      <button class="btn btn-success">Add to Cart</button>
+    {% else %}
+      <span class="text-danger">Out of Stock</span>
+    {% endif %}
+  </div>
 </div>
