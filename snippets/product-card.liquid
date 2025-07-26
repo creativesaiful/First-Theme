@@ -1,15 +1,24 @@
-<div class="card h-100">
-  <a href="{{ product.url }}">
-    <img src="{{ product.featured_image | img_url: 'medium' }}" class="card-img-top" alt="{{ product.title }}">
-  </a>
-  <div class="card-body text-center">
-    <h5 class="card-title">{{ product.title }}</h5>
-    <p class="card-text">{{ product.price | money }}</p>
+<div class="card">
+    <img src="{{ product.featured_image | img_url:"medum" }}" class="card-img-top" alt="{{ product.title }}">
+    
+    <a href="{{ product.url }}" > <h3 class="card-title">{{ product.title }}</h3></a>
 
-    {% if product.available %}
-      <button class="btn btn-success">Add to Cart</button>
-    {% else %}
-      <span class="text-danger">Out of Stock</span>
+    {% if product.compare_at_price > product.price %}
+
+        <p class="card-text">
+            <span class="text-muted">Was: {{ product.compare_at_price | money }}</span> Now: {{ product.price | money }}
+        </p>
+
     {% endif %}
-  </div>
+
+{% if product.available %}
+    <a href="{{ product.url }}" class="btn btn-primary"> Add to Cart<a>
+    {% else %}
+        <p class="text-danger">Out of Stock</p>
+    {% endif %}
+
+    <p class="card-text">{{ product.description | truncatewords: 20 }}</p>
+
+    <a href="{{ product.url }}" class="btn btn-primary">View Product</a>
+    
 </div>
