@@ -15,7 +15,7 @@
                 {% for variant in product.variants %}
                 <tr>
                     <td>{{ variant.title }}</td>
-                    <td>{{ variant.price | money }}</td>
+                    <td>{% if variant.available %}{{ variant.price | money }}{% else %}Out of Stock{% endif %}</td>
                     <td>
                         {% for option in variant.options %}
                             {{ option }}{% unless forloop.last %}, {% endunless %}
