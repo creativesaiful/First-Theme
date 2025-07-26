@@ -1,36 +1,51 @@
-<table class="table table-sm" >
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    
-                    <th>Options</th>
-           
-                    <th>Barcode</th>
-                    <th>Weight  </th>
-<th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
+<div class="card p-4 mb-4 shadow-sm">
 
-                {% for variant in product.variants %}
-                <tr>
-                    <td>{{ variant.title }}</td>
-                   
-                    <td>
-                        {% for option in variant.options %}
-                            {{ option }}{% unless forloop.last %}, {% endunless %}
-                        {% endfor %}
-                    </td>
-                     
-                    <td>{{ variant.barcode }}</td>
-                    <td>{{ variant.weight }} {{ variant.weight_unit }}</td>
-                     <td>{% if variant.available %}{{ variant.price | money }}{% else %}Out of Stock{% endif %}</td>
-                </tr>
-                {% endfor %}
+  <!-- Show Option Names & Values -->
+  <h5 class="mb-3">Available Options:</h5>
+  <ul class="list-group mb-4">
+    {% for option in product.options_with_values %}
+      <li class="list-group-item">
+        <strong>{{ option.name }}:</strong>
+        {% for value in option.values %}
+          <span class="badge bg-secondary me-1">{{ value }}</span>
+        {% endfor %}
+      </li>
+    {% endfor %}
+  </ul>
 
+  <!-- Show Variant Table -->
+  <h5 class="mb-3">All Variants:</h5>
+  <table class="table table-bordered table-sm">
+    <thead class="table-light">
+      <tr>
+        <th>Title</th>
+        <th>Options</th>
+        <th>SKU</th>
+        <th>Price</th>
+        <th>Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for variant in product.variants %}
+        <tr>
+          <td>{{ variant.title }}</td>
+          <td>
+            {% for option in variant.options %}
+              <span class="badge bg-info text-dark">{{ option }}</span>
+            {% endfor %}
+          </td>
+          <td>{{ variant.sku }}</td>
+          <td>{{ variant.price | money }}</td>
+          <td>
+            {% if variant.available %}
+              <span class="text-success">In Stock</span>
+            {% else %}
+              <span class="text-danger">Out of Stock</span>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
-
-          
-            </tbody>
-
-</table>
+</div>
