@@ -15,16 +15,7 @@
       <p class="card-text"><strong>{{ product.price | money }}</strong></p>
     {% endif %}
 
-       <form id="add-to-cart-form">
-  <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-  
-  <div class="mb-2">
-    <label for="quantity">Quantity:</label>
-    <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control w-25">
-  </div>
-
-  <button type="submit" class="btn btn-primary">Add to Cart</button>
-</form>
+      
 
 <div id="add-to-cart-response"></div>
 
@@ -33,7 +24,16 @@
  
 
     {% if product.available %}
-      <p class="text-success">In Stock</p>
+       <form id="add-to-cart-form" class="form">
+  <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+  
+  <div class="mb-2 form-group">
+    <label for="quantity" class="form-label">Quantity:</label>
+    <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control w-25">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add to Cart</button>
+</form>
     {% else %}
       <p class="text-danger">Out of Stock</p>
     {% endif %}
