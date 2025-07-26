@@ -8,8 +8,8 @@
 
     {% if product.compare_at_price > product.price %}
       <p class="card-text">
-        <span class="text-muted">Was: {{ product.compare_at_price | money }}</span>
-        <strong>Now: {{ product.price | money }}</strong>
+        <span class="text-decoration-line-through text-red">{{ product.compare_at_price | money }}</span> <br>
+        <strong> {{ product.price | money }}</strong>
       </p>
     {% else %}
       <p class="card-text"><strong>{{ product.price | money }}</strong></p>
