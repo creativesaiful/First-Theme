@@ -24,11 +24,11 @@
  
 
     {% if product.available %}
-       <form id="add-to-cart-form" class="form">
+       <form id="add-to-cart-form" >
   <input type="hidden" name="id" value="{{ product.variants.first.id }}">
   
-  <div class="mb-2 form-group">
-    <label for="quantity" class="form-label">Quantity:</label>
+  <div class="mb-2 form-group d-flex justify-content-center">
+    <label for="quantity">Quantity:</label>
     <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control w-25">
   </div>
 
