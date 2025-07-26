@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page_title }}</title>
+  {{ content_for_header }}  <!-- Shopify CSS/JS এখানে লোড হয় -->
+</head>
+<body>
+
+  {% section 'header' %}   <!-- Header section ডাকা হয়েছে -->
+  
+  {{ content_for_layout }} <!-- এখানে আসবে পেজ কন্টেন্ট -->
+
+  {% section 'footer' %}   <!-- Footer section ডাকা হয়েছে -->
+
+</body>
+</html>
