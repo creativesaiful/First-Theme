@@ -1,0 +1,35 @@
+<table class="table" >
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Options</th>
+                    <th>SKU</th>
+                    <th>Barcode</th>
+                    <th>Weight  </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for variant in product.variants %}
+                <tr>
+                    <td>{{ variant.title }}</td>
+                    <td>{{ variant.price | money }}</td>
+                    <td>
+                        {% for option in variant.options %}
+                            {{ option }}{% unless forloop.last %}, {% endunless %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ variant.sku }}</td>
+                    <td>{{ variant.barcode }}</td>
+                    <td>{{ variant.weight }} {{ variant.weight_unit }}</td>
+                </tr>
+                {% endfor %}
+
+
+
+          
+            </tbody>
+
+</table>
