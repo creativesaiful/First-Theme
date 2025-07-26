@@ -1,0 +1,8 @@
+<section style="padding: 40px;">
+  <h2 style="text-align:center;">Featured Products</h2>
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+    {% for product in collections.all.products limit: 6 %}
+      {% render 'product-card', product: product %}
+    {% endfor %}
+  </div>
+</section>

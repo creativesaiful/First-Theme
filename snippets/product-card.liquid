@@ -1,0 +1,13 @@
+<div class="product-card" style="border:1px solid #ddd; padding:20px; margin-bottom:20px;">
+  <a href="{{ product.url }}">
+    <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}" style="width:100%;">
+  </a>
+  <h3>{{ product.title }}</h3>
+  <p>{{ product.price | money }}</p>
+
+  {% if product.available %}
+    <button style="padding:10px 20px;">Add to Cart</button>
+  {% else %}
+    <span style="color:red;">Out of stock</span>
+  {% endif %}
+</div>
