@@ -8,7 +8,7 @@
 
     {% if product.compare_at_price > product.price %}
       <p class="card-text">
-        <span class="text-decoration-line-through text-red">{{ product.compare_at_price | money }}</span> <br>
+        <span class="text-decoration-line-through text-danger">{{ product.compare_at_price | money }}</span> <br>
         <strong> {{ product.price | money }}</strong>
       </p>
     {% else %}
@@ -27,13 +27,15 @@
        <form id="add-to-cart-form" >
   <input type="hidden" name="id" value="{{ product.variants.first.id }}">
   
-  <div class="mb-2 form-group d-flex justify-content-center">
+  <div class="mb-2 form-group d-flex ">
     <label for="quantity">Quantity:</label>
-    <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control w-25">
+    <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control w-25 mx-2">
   </div>
 
   <button type="submit" class="btn btn-primary">Add to Cart</button>
 </form>
+
+<div id="add-to-cart-response"></div>
     {% else %}
       <p class="text-danger">Out of Stock</p>
     {% endif %}
