@@ -29,30 +29,31 @@
 
 <script>
   $(document).ready(function () {
-    $('#add-to-cart-form').on('submit', function (e) {
-      e.preventDefault();
+  $('.add-to-cart-form').on('submit', function (e) {
+    e.preventDefault(); // Stop the form from submitting
 
-      var formData = {
-        id: $('input[name="id"]').val(),
-        quantity: $('#quantity').val()
-      };
+    let form = $(this); // Get the specific form
+    let formData = {
+      id: form.find('input[name="id"]').val(),
+      quantity: form.find('input[name="quantity"]').val()
+    };
 
-      $.ajax({
-        type: 'POST',
-        url: '/cart/add.js',
-        data: formData,
-        dataType: 'json',
-        success: function (response) {
-          $('#add-to-cart-response').html('<p class="text-success">Product added to cart!</p>');
-          console.log(response);
-        },
-        error: function (error) {
-          $('#add-to-cart-response').html('<p class="text-danger">Something went wrong!</p>');
-          console.error(error);
-        }
-      });
+    $.ajax({
+      type: 'POST',
+      url: '/cart/add.js',
+      data: formData,
+      dataType: 'json',
+      success: function (response) {
+        form.find('.add-to-cart-response').html('<p class="text-success">✅ Added to cart!</p>');
+      },
+      error: function (xhr) {
+        form.find('.add-to-cart-response').html('<p class="text-danger">❌ Error!</p>');
+        console.log(xhr.responseText);
+      }
     });
   });
+});
+
 </script>
 
 </body>
