@@ -1,24 +1,28 @@
-<div class="card">
-    <img src="{{ product.featured_image | img_url:"medium" }}" class="card-img-top" alt="{{ product.title }}">
-    
-    <a href="{{ product.url }}" > <h3 class="card-title">{{ product.title }}</h3></a>
+<div class="card h-100">
+  <img src="{{ product.featured_image | img_url: 'medium' }}" class="card-img-top" alt="{{ product.title }}">
+
+  <div class="card-body text-center">
+    <a href="{{ product.url }}" class="text-decoration-none">
+      <h5 class="card-title">{{ product.title }}</h5>
+    </a>
 
     {% if product.compare_at_price > product.price %}
-
-        <p class="card-text">
-            <span class="text-muted">Was: {{ product.compare_at_price | money }}</span> Now: {{ product.price | money }}
-        </p>
-
-    {% endif %}
-
-{% if product.available %}
-    <a href="{{ product.url }}" class="btn btn-primary"> Add to Cart</a>
+      <p class="card-text">
+        <span class="text-muted">Was: {{ product.compare_at_price | money }}</span>
+        <strong>Now: {{ product.price | money }}</strong>
+      </p>
     {% else %}
-        <p class="text-danger">Out of Stock</p>
+      <p class="card-text"><strong>{{ product.price | money }}</strong></p>
     {% endif %}
 
-    <p class="card-text">{{ product.description | truncatewords: 20 }}</p>
+    {% if product.available %}
+      <p class="text-success">In Stock</p>
+    {% else %}
+      <p class="text-danger">Out of Stock</p>
+    {% endif %}
 
-    <a href="{{ product.url }}" class="btn btn-primary">View Product</a>
-    
+    <p class="card-text">{{ product.description | strip_html | truncatewords: 20 }}</p>
+
+    <a href="{{ product.url }}" class="btn btn-outline-primary">View Product</a>
+  </div>
 </div>
