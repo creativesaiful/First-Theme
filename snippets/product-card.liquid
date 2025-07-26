@@ -1,5 +1,5 @@
 <div class="card">
-    <img src="{{ product.featured_image | img_url:"medum" }}" class="card-img-top" alt="{{ product.title }}">
+    <img src="{{ product.featured_image | img_url:"medium" }}" class="card-img-top" alt="{{ product.title }}">
     
     <a href="{{ product.url }}" > <h3 class="card-title">{{ product.title }}</h3></a>
 
@@ -12,7 +12,7 @@
     {% endif %}
 
 {% if product.available %}
-    <a href="{{ product.url }}" class="btn btn-primary"> Add to Cart<a>
+    <a href="{{ product.url }}" class="btn btn-primary"> Add to Cart</a>
     {% else %}
         <p class="text-danger">Out of Stock</p>
     {% endif %}
