@@ -55,10 +55,11 @@
   });
 
 
-  function updateCart() {
+  function updateCartCount() {
     $.getJSON('/cart.js', function(cart) {
-  console.log(cart);  
-  console.log(cart.item_count);  
+      $('#cart-count').text(cart.item_count);
+      $('#cart-total').text(cart.total_price / 100 + ' ৳'); // Assuming total price is in cents
+    });
 });
   }
 
