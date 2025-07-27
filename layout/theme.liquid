@@ -45,7 +45,7 @@
       dataType: 'json',
       success: function (response) {
         form.find('.add-to-cart-response').html('<p class="text-success">✅ Added to cart!</p>');
-        console.log(response);
+        updateCart() ;
       },
       error: function (xhr) {
         form.find('.add-to-cart-response').html('<p class="text-danger">❌ Error!</p>');
@@ -55,10 +55,12 @@
   });
 
 
- $.getJSON('/cart.js', function(cart) {
+  function updateCart() {
+    $.getJSON('/cart.js', function(cart) {
   console.log(cart);  
   console.log(cart.item_count);  
 });
+  }
 
 
 
