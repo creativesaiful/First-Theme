@@ -45,7 +45,7 @@
       dataType: 'json',
       success: function (response) {
         form.find('.add-to-cart-response').html('<p class="text-success">✅ Added to cart!</p>');
-        updateCart() ;
+        updateCartCount() ;
       },
       error: function (xhr) {
         form.find('.add-to-cart-response').html('<p class="text-danger">❌ Error!</p>');
