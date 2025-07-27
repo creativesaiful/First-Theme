@@ -55,9 +55,11 @@
   });
 
 
-  $.getJSON('/cart.js', function (cart) {
-    console.log(cart);
-  })
+ $.getJSON('/cart.js', function(cart) {
+  console.log(cart);  
+  console.log(cart.item_count);  
+});
+
 
 
 });
